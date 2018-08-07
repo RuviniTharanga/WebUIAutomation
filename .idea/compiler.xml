@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="sysco_java_based_web_ui_automation" target="1.5" />
+      <module name="sysco_java_based_web_ui_automation" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
