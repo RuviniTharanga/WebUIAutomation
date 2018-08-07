@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.github.dbfit:fitlibrary:20091020">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/dbfit/fitlibrary/20091020/fitlibrary-20091020.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/dbfit/fitlibrary/20091020/fitlibrary-20091020-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/dbfit/fitlibrary/20091020/fitlibrary-20091020-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

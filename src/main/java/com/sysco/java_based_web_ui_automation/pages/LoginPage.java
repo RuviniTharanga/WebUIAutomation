@@ -1,0 +1,45 @@
+package com.sysco.java_based_web_ui_automation.pages;
+
+import com.syscolab.qe.core.ui.SyscoLabUI;
+import com.syscolab.qe.core.ui.web.SyscoLabWUI;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Capabilities;
+
+/**
+ * Created by Rifad on 5/21/18.
+ */
+public class LoginPage {
+    protected static SyscoLabUI syscoLabUIOgm;
+    private By txtGoogleSearch = By.id("lst-ib");
+    private By drpDate = By.id("age_select_day");
+    private By drpMonth = By.id("age_select_month");
+    private By drpYear = By.id("age_select_year");
+    private By selectDate = By.xpath("//*[@id=\"age_select_day\"]/option[11]");
+
+
+    public static void loadLoginPage(Capabilities capabilities, String url) {
+        syscoLabUIOgm = new SyscoLabWUI(capabilities);
+        syscoLabUIOgm.navigateTo(url);
+        syscoLabUIOgm.driver.manage().window().maximize();
+    }
+
+    public void quitDriver() {
+        if (syscoLabUIOgm != null) {
+            syscoLabUIOgm.quit();
+        }
+    }
+
+
+    public void enterText(String searchString) {
+        syscoLabUIOgm.sendKeys(txtGoogleSearch, searchString);
+    }
+
+     public void clickDate(){
+        syscoLabUIOgm.click(drpDate);
+    }
+    public void typeDate(){
+        syscoLabUIOgm.click(selectDate);
+    }
+
+}
+
