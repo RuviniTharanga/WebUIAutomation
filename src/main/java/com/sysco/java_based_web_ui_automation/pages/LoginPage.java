@@ -14,7 +14,15 @@ public class LoginPage {
     private By drpDate = By.id("age_select_day");
     private By drpMonth = By.id("age_select_month");
     private By drpYear = By.id("age_select_year");
-    private By selectDate = By.xpath("//*[@id=\"age_select_day\"]/option[11]");
+    private By setDate = By.xpath("//*[@id=\"age_select_day\"]/option[26]");
+    private By setMonth = By.xpath("//*[@id=\"age_select_month\"]/option[4]");
+    private By setYear1 = By.xpath("//*[@id=\"age_select_year\"]/option[2]");
+    private By setYear2 = By.xpath("//*[@id=\"age_select_year\"]/option[17]");
+    private By btnEnter = By.id("age_confirm_btn");
+    private By drpCountry = By.id("age_select_country");
+    private By errorEntering = By.xpath("//*[@id=\"age_missing_message\"]/span");
+    private By btnMyAccount = By.xpath("//*[@id=\"quick-access-list\"]/li[1]/ul/li[2]/ul");
+
 
 
     public static void loadLoginPage(Capabilities capabilities, String url) {
@@ -30,16 +38,42 @@ public class LoginPage {
     }
 
 
-    public void enterText(String searchString) {
-        syscoLabUIOgm.sendKeys(txtGoogleSearch, searchString);
-    }
+//    public void enterText(String searchString) {
+//        syscoLabUIOgm.sendKeys(txtGoogleSearch, searchString);
+//    }
 
      public void clickDate(){
         syscoLabUIOgm.click(drpDate);
     }
     public void typeDate(){
-        syscoLabUIOgm.click(selectDate);
+        syscoLabUIOgm.click(setDate);
     }
+    public void clickMonth(){
+        syscoLabUIOgm.click(drpMonth);
+    }
+    public void typeMonth(){
+        syscoLabUIOgm.click(setMonth);
+    }public void clickYear(){
+        syscoLabUIOgm.click(drpYear);
+    }
+    public void typeYear(){
+        syscoLabUIOgm.click(setYear1);
+    }
+    public void typeYear2(){
+        syscoLabUIOgm.click(setYear2);
+    }
+    public void clickEnter(){
+        syscoLabUIOgm.click(btnEnter);
+    }
+
+    public String getError(){
+        return syscoLabUIOgm.getText(errorEntering);
+    }
+    public void clickMyAccount(){
+        syscoLabUIOgm.sleep(3);
+        syscoLabUIOgm.click(btnMyAccount);
+    }
+
 
 }
 
