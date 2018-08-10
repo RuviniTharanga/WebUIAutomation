@@ -19,9 +19,9 @@ public class LoginPage {
     private By setYear1 = By.xpath("//*[@id=\"age_select_year\"]/option[2]");
     private By setYear2 = By.xpath("//*[@id=\"age_select_year\"]/option[17]");
     private By btnEnter = By.id("age_confirm_btn");
-    private By drpCountry = By.id("age_select_country");
+    //private By drpCountry1 = By.id("age_select_country");
+    private By drpCountry = By.xpath("//*[@id=\"age_select_country\"]");
     private By errorEntering = By.xpath("//*[@id=\"age_missing_message\"]/span");
-    private By btnMyAccount = By.xpath("//*[@id=\"quick-access-list\"]/li[1]/ul/li[2]/ul");
 
 
 
@@ -69,10 +69,10 @@ public class LoginPage {
     public String getError(){
         return syscoLabUIOgm.getText(errorEntering);
     }
-    public void clickMyAccount(){
-        syscoLabUIOgm.sleep(3);
-        syscoLabUIOgm.click(btnMyAccount);
+    public String getCountry(){
+        return syscoLabUIOgm.getText(drpCountry);
     }
+
 
 
 }

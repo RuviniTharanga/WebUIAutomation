@@ -55,8 +55,8 @@ public class Login  {
         ogmLoginPage.typeYear2();
         ogmLoginPage.clickEnter();
     }
-    public static void clickMyAccount(){
-        ogmLoginPage.clickMyAccount();
+    public static String getCountry(){
+        return ogmLoginPage.getCountry();
     }
 
 }
