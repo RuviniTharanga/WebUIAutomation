@@ -37,13 +37,14 @@ public class LoginTest extends TestBase {
     @Test(description = "TC 02",dependsOnMethods = "testRestrictEnterForUnderAge")
     public void testCorrectCountrySelection(){
         SoftAssert softAssert = new SoftAssert();
-        //Login.getCountry();
-        //softAssert.assertEquals(Login.getCountry(),"Sri Lanka");
+        Login.getCountry();
+        softAssert.assertEquals(Login.getCountry(),"Sri Lanka","Selected country is incorrect");
         softAssert.assertAll();
     }
     @Test(description = "TC 03",dependsOnMethods = "testCorrectCountrySelection")
     public void testEnterAnotherCountry(){
         SoftAssert softAssert = new SoftAssert();
+        Login.setDifferentCountry();
         softAssert.assertAll();
     }
     @Test(description = "TC 04:Verify Enter for age over 18",dependsOnMethods = "testEnterAnotherCountry")
@@ -149,28 +150,78 @@ public class LoginTest extends TestBase {
         Cart.enterFirstName("william");
         Cart.enterLastName("jacob");
         Cart.enterAddress1("Abc");
-        Cart.enterContactNumber("42342423423");
+        Cart.enterContactNumber("2222222222");
         SoftAssert softAssert=new SoftAssert();
         softAssert.assertEquals(Cart.isDisplayedFirstName(),"william","expected name does not displayed");
         softAssert.assertEquals(Cart.isDisplayedLastName(),"jacob","expected name does not displayed");
         softAssert.assertEquals(Cart.isDisplayedAddress(),"Abc","expected name does not displayed");
-        softAssert.assertEquals(Cart.isDisplayedContactNumber(),"42342423423","expected name does not displayed");
+        softAssert.assertEquals(Cart.isDisplayedContactNumber(),"2222222222","expected name does not displayed");
         Cart.removePostCode();
         Cart.enterPostCode("2000");
         Cart.clickContinue();
         softAssert.assertEquals(Cart.isDisplayedDeliveryOptions(),"DELIVERY OPTIONS","expected name does not displayed");
         softAssert.assertAll();
     }
-    @Test(description = "TC 13",dependsOnMethods = "testContinueInProceedToCheckOut")
-    public static void testDeliveryOptions() {
+
+    @Test(description = "TC 14",dependsOnMethods = "testContinueInProceedToCheckOut")
+    public static void testPaymentMethodsDisplayed() {
+        SoftAssert softAssert = new SoftAssert();
         Cart.clickContinueInDeliveryOptions();
+        //verify payment methods displayed
+        Cart.isCreditCardPaymentDisplayed();
+        softAssert.assertTrue(true,"Credit card payment not displayed");
+        Cart.isPaypalPaymentDisplayed();
+        softAssert.assertTrue(true,"Paypal payment not displayed");
+        softAssert.assertAll();
+    }
+
+    @Test(description = "TC-15",dependsOnMethods = "testPaymentMethodsDisplayed")
+    public static void testCardValidationsWhenCCAndCvvEmpty(){
+        SoftAssert softAssert = new SoftAssert();
+        Cart.selectCreditCardPayment();
+        Cart.clickPurchase();
+        Cart.getErrorEmptyCreditCardNumber();
+        Cart.getErrorEmptyCvvNumber();
+        softAssert.assertEquals(Cart.getErrorEmptyCreditCardNumber(),"This is a required field.","Credit Card number kept empty");
+        softAssert.assertEquals(Cart.getErrorEmptyCvvNumber(),"This is a required field.","cvv number kept empty");
+        softAssert.assertAll();
+    }
+
+    @Test(description = "TC-16",dependsOnMethods = "testCardValidationsWhenCCAndCvvEmpty")
+    public static void testCardValidationForExpireDay(){
+        SoftAssert softAssert = new SoftAssert();
+        //Cart.setExpiryMonthJanuary();
+        //Cart.setExpiryYear2018();
+        //softAssert.assertEquals(Cart.getErrorExpireMonth(),"Incorrect credit card expiration date.","Error message not displayed for overdue Expiry month");
+        softAssert.assertAll();
+    }
+
+    @Test(description = "TC-17",dependsOnMethods = "testCardValidationForExpireDay")
+    public static void testEnterCreditcardDetails(){
+        SoftAssert softAssert = new SoftAssert();
+        Cart.enterCorrectCreditCardNoVisa("4111111111111111","123");
+        softAssert.assertEquals(Cart.getEnteredCreditCardDetails(),"4111111111111111","credit card number entered incorreclyt");
+        softAssert.assertEquals(Cart.getEnteredCvvDetails(),"123","cvv number entered incorreclyt");
+        softAssert.assertAll();
+
+    }
+
+    @Test(description = "TC 18",dependsOnMethods = "testCardValidationForExpireDay",alwaysRun = true)
+    public static void testEnteringPayPalDetails() {
+        SoftAssert softAssert=new SoftAssert();
         Cart.selectPayPalOption();
         Cart.selectAgreement();
         Cart.clickPurchase();
-        SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(Cart.isDisplayedPayPalAccount(),"PayPal Guest Checkout","expected name does not displayed");
+
+        Cart.enterCCNumber("4111111111111111");
+        Cart.enterExpiry("");
+        Cart.enterCvv("");
+        Cart.enterPhone("");
+
         softAssert.assertAll();
+
     }
+
 
     @AfterClass
     public void cleanup(){

@@ -58,5 +58,8 @@ public class Login  {
     public static String getCountry(){
         return ogmLoginPage.getCountry();
     }
+    public static void setDifferentCountry(){
+        ogmLoginPage.setDifferentCountry();
+    }
 
 }

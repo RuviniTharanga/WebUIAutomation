@@ -67,10 +67,16 @@ public class LoginPage {
     }
 
     public String getError(){
+
         return syscoLabUIOgm.getText(errorEntering);
     }
     public String getCountry(){
-        return syscoLabUIOgm.getText(drpCountry);
+        return syscoLabUIOgm.getFirstSelectedOptionText(drpCountry);
+    }
+    public void setDifferentCountry(){
+        syscoLabUIOgm.click(drpCountry);
+        syscoLabUIOgm.scrollUp();
+        syscoLabUIOgm.click(drpCountry);
     }
 
 

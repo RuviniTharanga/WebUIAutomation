@@ -131,10 +131,66 @@ public class Cart {
         cartPage.selectAgreement();
     }
     public static void clickPurchase() {
-        cartPage.clickPurchase();
+        cartPage.clickPurchaseMyOrder();
     }
     public static String isDisplayedPayPalAccount() {
         return  cartPage.isDisplayedPayPalAccount();
     }
+    public static void enterCCNumber(String ccNumber){
+        cartPage.enterCCNumber(ccNumber);
+    }
+    public static void enterCvv(String cvv){
+        cartPage.enterCCNumber(cvv);
+    }
+    public static void enterExpiry(String expiryDate){
+        cartPage.enterCCNumber(expiryDate);
+    }
+    public static void enterPhone(String phoneNumber){
+        cartPage.enterPhone(phoneNumber);
+    }
+    public static void selectCreditCardPayment(){
+        cartPage.selectCreditCardPayment();
+    }
+    public static void setExpiryMonthJanuary(){
+        cartPage.clickMonth();
+        cartPage.setJanuary();
+    }
+    public static void setExpiryYear2018(){
+        cartPage.clickYear();
+    }
+    public static void setExpiryMonthNovember(){
+        cartPage.clickMonth();
+        cartPage.setNovember();
+    }
+    public static String getErrorEmptyCreditCardNumber(){
+        return cartPage.getEmptyCreditCardNumber();
+    }
+    public static String getErrorEmptyCvvNumber(){
+        return cartPage.getEmptyCvvNumber();
+    }
+    public static String getErrorExpireMonth(){
+        return cartPage.getErrorExpireMonth();
+    }
+    public static Boolean isCreditCardPaymentDisplayed(){
+        cartPage.isCreditCardPaymentDisplayed();
+        return null;
+    }
+    public static Boolean isPaypalPaymentDisplayed(){
+        cartPage.isPaypalPaymentDisplayed();
+        return null;
+    }
+
+    public static void enterCorrectCreditCardNoVisa(String ccNo,String cvv){
+        cartPage.clickVisaIcon();
+        cartPage.enterCorrectCreditCardNoVisa(ccNo);
+        cartPage.enterCorrectCvvNoVisa(cvv);
+    }
+    public static String getEnteredCreditCardDetails(){
+        return cartPage.getEnteredCardDetails();
+    }
+    public static String getEnteredCvvDetails(){
+        return cartPage.getEnteredCvvDetails();
+    }
+
 
 }

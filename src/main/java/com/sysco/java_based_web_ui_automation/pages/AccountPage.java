@@ -51,6 +51,7 @@ public class AccountPage extends LoginPage{
     }
     public String getUsername(){
         //System.out.println(syscoLabUIOgm.getText(lblusername));
+        syscoLabUIOgm.sleep(2);
         return syscoLabUIOgm.getText(lblusername);
     }
 
