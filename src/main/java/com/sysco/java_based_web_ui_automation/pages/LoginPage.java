@@ -5,9 +5,6 @@ import com.syscolab.qe.core.ui.web.SyscoLabWUI;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
 
-/**
- * Created by Rifad on 5/21/18.
- */
 public class LoginPage {
     protected static SyscoLabUI syscoLabUIOgm;
     private By txtGoogleSearch = By.id("lst-ib");
@@ -22,6 +19,7 @@ public class LoginPage {
     //private By drpCountry1 = By.id("age_select_country");
     private By drpCountry = By.xpath("//*[@id=\"age_select_country\"]");
     private By errorEntering = By.xpath("//*[@id=\"age_missing_message\"]/span");
+    private By albania =By.xpath("//*[@id=\"age_select_country\"]/option[5]");
 
 
 
@@ -75,8 +73,10 @@ public class LoginPage {
     }
     public void setDifferentCountry(){
         syscoLabUIOgm.click(drpCountry);
-        syscoLabUIOgm.scrollUp();
-        syscoLabUIOgm.click(drpCountry);
+        syscoLabUIOgm.move(albania);
+        syscoLabUIOgm.click(albania);
+        syscoLabUIOgm.sleep(2);
+
     }
 
 

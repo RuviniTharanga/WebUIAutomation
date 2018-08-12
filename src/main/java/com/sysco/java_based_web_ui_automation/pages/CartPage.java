@@ -7,9 +7,6 @@ import org.openqa.selenium.support.ui.Select;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-/**
- * Created by Rifad on 5/21/18.
- */
 public class CartPage extends LoginPage {
 
     private By icnCart = By.id("cartHeader");
@@ -48,8 +45,9 @@ public class CartPage extends LoginPage {
     private static By chkAgreement =By.id("agreement-1");
     private static By btnPurchaseMyOrder =By.id("payment-method-button");
     private static By txtPayPal =By.id("pageTitle");
-    private static By txtCreditCardNumber = By.id("cc");
-    private static By txtCvv = By.id("cvv");
+    private static By txtCreditCardNumberPaypal = By.id("cc");
+    private static By icnVisainPaypal =By.id("creditCard");
+    private static By txtCvvPaypal = By.id("cvv");
     private static By txtExpiry_value = By.id("expiry_value");
     private static By txtFirstNameInPaypal = By.id("firstName");
     private static By txtLastNameInPaypal = By.id("lastName");
@@ -74,7 +72,10 @@ public class CartPage extends LoginPage {
     private static By errorEmptyCreditCardNumber = By.id("advice-required-entry-braintree_cc_number");
     private static By errorEmptyCvvNumber = By.id("advice-required-entry-braintree_cc_cid");
     private static By errorExpiryMonth= By.id("advice-validate-cc-exp-braintree_expiration");
-
+    private static By errorIncorrectCreditCardNo =By.id("advice-validate-cc-number-braintree_cc_number");
+    private static By errorIncorrectCvvformat =By.id("advice-validate-cc-cvn-autodetect-braintree_cc_cid");
+    private static By errorforEmptyExpireInPaypal =By.xpath("//*[@id=\"expiry_value\"]");
+    private static By btnContinueInPaypal =By.id("guestSubmit");
 
     public void clickCartIcon() {
         syscoLabUIOgm.sleep(1);
@@ -268,8 +269,20 @@ public class CartPage extends LoginPage {
         syscoLabUIOgm.sleep(2);
         return (syscoLabUIOgm.getText(txtPayPal));
     }
+    public void clickonWindowAlert(){
+        syscoLabUIOgm.clickOkInWindowsAlert();
+    }
+    public Boolean isOkClickedonWindowAlert(){
+        syscoLabUIOgm.clickOkInWindowsAlert();
+        return null;
+    }
     public void enterCCNumber(String ccNumber){
-        syscoLabUIOgm.sendKeys(txtCreditCardNumber,ccNumber);
+        syscoLabUIOgm.sleep(2);
+        syscoLabUIOgm.sendKeys(txtCreditCardNumberPaypal,ccNumber);
+    }
+    public void enterCvvNumber(String cvvNumber){
+        syscoLabUIOgm.sleep(2);
+        syscoLabUIOgm.sendKeys(txtCvvPaypal,cvvNumber);
     }
     public void enterPhone(String phoneNumber){
         syscoLabUIOgm.sendKeys(txtPhone,phoneNumber);
@@ -285,7 +298,9 @@ public class CartPage extends LoginPage {
         syscoLabUIOgm.click(expirationYear);
     }
     public void setJanuary(){
-        //syscoLabUIOgm.scrollDown(2);
+        syscoLabUIOgm.sleep(1);
+        syscoLabUIOgm.click(expirationMonth);
+        syscoLabUIOgm.move(lstJan);
         syscoLabUIOgm.sleep(1);
         syscoLabUIOgm.click(lstJan);
     }
@@ -302,6 +317,7 @@ public class CartPage extends LoginPage {
         return syscoLabUIOgm.getText(errorExpiryMonth);
     }
     public Boolean isCreditCardPaymentDisplayed(){
+        syscoLabUIOgm.sleep(1);
          syscoLabUIOgm.getText(rdBttnCreditCard);
          return null;
     }
@@ -315,14 +331,57 @@ public class CartPage extends LoginPage {
     public void enterCorrectCreditCardNoVisa(String ccNo){
         syscoLabUIOgm.sendKeys(txtCreditCard,ccNo);
     }
-    public void enterCorrectCvvNoVisa(String ccNo){
-        syscoLabUIOgm.sendKeys(txtCvvNumber,ccNo);
+    public void enterCorrectCvvNoVisa(String cvvNo){
+        syscoLabUIOgm.sendKeys(txtCvvNumber,cvvNo);
     }
     public String getEnteredCardDetails(){
-        return syscoLabUIOgm.getText(txtCreditCard);
+        return syscoLabUIOgm.getValue(txtCreditCard);
     }
     public String getEnteredCvvDetails(){
-        return syscoLabUIOgm.getText(txtCvvNumber);
+        return syscoLabUIOgm.getValue(txtCvvNumber);
+    }
+    public String getErrorForIncorrectCardNo(){
+        return syscoLabUIOgm.getText(errorIncorrectCreditCardNo);
+    }
+    public String getErrorForIncorrectCvv(){
+        return syscoLabUIOgm.getText(errorIncorrectCvvformat);
+    }
+    public void clearCardAndCvv(){
+        syscoLabUIOgm.clear(txtCreditCard);
+        syscoLabUIOgm.clear(txtCvvNumber);
+
+    }
+    public Boolean getIsVisaIconDisplayedinPaypalForFirstDigit(){
+        syscoLabUIOgm.sleep(2);
+       return syscoLabUIOgm.isDisplayed(icnVisainPaypal);
+    }
+    public Boolean getErrorForEmptyExpireInPaypal(){
+        syscoLabUIOgm.sleep(1);
+        return syscoLabUIOgm.isDisplayed(errorforEmptyExpireInPaypal);
+    }
+    public void clickbtnContinueInPaypal(){
+        syscoLabUIOgm.sleep(1);
+        syscoLabUIOgm.click(btnContinueInPaypal);
+    }
+    public String getFirstNameDisplayedinPaypal(){
+        syscoLabUIOgm.sleep(2);
+        return syscoLabUIOgm.getValue(txtFirstNameInPaypal);
+    }
+    public String getLastNameDisplayedinPaypal(){
+        syscoLabUIOgm.sleep(2);
+        return syscoLabUIOgm.getValue(txtLastNameInPaypal);
+    }
+    public String getAddress1DisplayedinPaypal(){
+        syscoLabUIOgm.sleep(2);
+        return syscoLabUIOgm.getValue(txtBillingLine1);
+    }
+    public String getPostalCodeDisplayedinPaypal(){
+        syscoLabUIOgm.sleep(2);
+        return syscoLabUIOgm.getValue(txtBillingPostalCode);
+    }
+    public String getEmailDisplayedInPaypal(){
+        syscoLabUIOgm.sleep(2);
+        return syscoLabUIOgm.getValue(txtEmail);
     }
 
 

@@ -2,10 +2,8 @@ package com.sysco.java_based_web_ui_automation.functions;
 
 import com.sysco.java_based_web_ui_automation.pages.AccountPage;
 import com.sysco.java_based_web_ui_automation.pages.CartPage;
+import org.apache.xpath.operations.Bool;
 
-/**
- * Created by Rifad on 5/21/18.
- */
 public class Cart {
 
     public static CartPage cartPage = new CartPage();
@@ -133,6 +131,13 @@ public class Cart {
     public static void clickPurchase() {
         cartPage.clickPurchaseMyOrder();
     }
+    public static void clickonWindowAlert(){
+        cartPage.clickonWindowAlert();
+    }
+    public static Boolean isOkClickedonWindowAlert(){
+        cartPage.clickonWindowAlert();
+        return null;
+    }
     public static String isDisplayedPayPalAccount() {
         return  cartPage.isDisplayedPayPalAccount();
     }
@@ -140,10 +145,10 @@ public class Cart {
         cartPage.enterCCNumber(ccNumber);
     }
     public static void enterCvv(String cvv){
-        cartPage.enterCCNumber(cvv);
+        cartPage.enterCvvNumber(cvv);
     }
     public static void enterExpiry(String expiryDate){
-        cartPage.enterCCNumber(expiryDate);
+        cartPage.enterCvvNumber(expiryDate);
     }
     public static void enterPhone(String phoneNumber){
         cartPage.enterPhone(phoneNumber);
@@ -152,7 +157,7 @@ public class Cart {
         cartPage.selectCreditCardPayment();
     }
     public static void setExpiryMonthJanuary(){
-        cartPage.clickMonth();
+        //cartPage.clickMonth();
         cartPage.setJanuary();
     }
     public static void setExpiryYear2018(){
@@ -180,7 +185,7 @@ public class Cart {
         return null;
     }
 
-    public static void enterCorrectCreditCardNoVisa(String ccNo,String cvv){
+    public static void enterCreditCardNoVisa(String ccNo,String cvv){
         cartPage.clickVisaIcon();
         cartPage.enterCorrectCreditCardNoVisa(ccNo);
         cartPage.enterCorrectCvvNoVisa(cvv);
@@ -190,6 +195,39 @@ public class Cart {
     }
     public static String getEnteredCvvDetails(){
         return cartPage.getEnteredCvvDetails();
+    }
+    public static String getErrorForIncorrectCardNo(){
+        return cartPage.getErrorForIncorrectCardNo();
+    }
+    public static String getErrorForIncorrectCvv(){
+        return cartPage.getErrorForIncorrectCvv();
+    }
+    public static void clearCardAndCvv(){
+        cartPage.clearCardAndCvv();
+    }
+    public static Boolean getIsVisaIconDisplayedinPaypalForFirstDigit(){
+        return cartPage.getIsVisaIconDisplayedinPaypalForFirstDigit();
+    }
+    public static Boolean getErrorForEmptyExpireInPaypal(){
+        return cartPage.getErrorForEmptyExpireInPaypal();
+    }
+    public static void clickbtnContinueInPaypal(){
+        cartPage.clickbtnContinueInPaypal();
+    }
+    public static String getFirstNameDisplayedinPaypal(){
+        return cartPage.getFirstNameDisplayedinPaypal();
+    }
+    public static String getLastNameDisplayedinPaypal(){
+        return cartPage.getLastNameDisplayedinPaypal();
+    }
+    public static String getAddress1DisplayedinPaypal(){
+        return  cartPage.getAddress1DisplayedinPaypal();
+    }
+    public static String getPostalCodeDisplayedinPaypal(){
+        return cartPage.getPostalCodeDisplayedinPaypal();
+    }
+    public static String getEmailDisplayedInPaypal(){
+        return cartPage.getEmailDisplayedInPaypal();
     }
 
 

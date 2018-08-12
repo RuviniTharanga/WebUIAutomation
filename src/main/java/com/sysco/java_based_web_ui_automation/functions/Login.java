@@ -6,12 +6,9 @@ import com.sysco.java_based_web_ui_automation.utils.DriverSetUpUtil;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.Select;
 
-/**
- * Created by Rifad on 5/21/18.
- */
 public class Login  {
 
-    public static LoginPage ogmLoginPage = new LoginPage();
+    public static LoginPage LoginPage = new LoginPage();
 
 
     public static void loadLoginPage() {
@@ -19,47 +16,47 @@ public class Login  {
         if (Constants.RUN_LOCALLY) {
             DriverSetUpUtil.setToRunLocally();
             DesiredCapabilities capabilities = null;
-            ogmLoginPage.loadLoginPage(capabilities, Constants.APP_URL);
+            LoginPage.loadLoginPage(capabilities, Constants.APP_URL);
         } else {
-            ogmLoginPage.loadLoginPage(DriverSetUpUtil.setToRunRemotely(Constants.APP_OS), Constants.APP_URL);
+            LoginPage.loadLoginPage(DriverSetUpUtil.setToRunRemotely(Constants.APP_OS), Constants.APP_URL);
         }
     }
 
 
     public static void quiteDriver() {
-        ogmLoginPage.quitDriver();
+        LoginPage.quitDriver();
     }
 
     public static void loginToFtr() {
 
     }
     public static void setBirthdayBelow18(){
-        ogmLoginPage.clickDate();
-        ogmLoginPage.typeDate();
-        ogmLoginPage.clickMonth();
-        ogmLoginPage.typeMonth();
-        ogmLoginPage.clickYear();
-        ogmLoginPage.typeYear();
-        ogmLoginPage.clickEnter();
+        LoginPage.clickDate();
+        LoginPage.typeDate();
+        LoginPage.clickMonth();
+        LoginPage.typeMonth();
+        LoginPage.clickYear();
+        LoginPage.typeYear();
+        LoginPage.clickEnter();
     }
     public static String getError(){
-       return ogmLoginPage.getError();
+       return LoginPage.getError();
     }
 
     public static void setBirthdayOver18(){
-        //ogmLoginPage.clickDate();
-        //ogmLoginPage.typeDate();
-        //ogmLoginPage.clickMonth();
-        //ogmLoginPage.typeMonth();
-        ogmLoginPage.clickYear();
-        ogmLoginPage.typeYear2();
-        ogmLoginPage.clickEnter();
+        LoginPage.clickDate();
+        LoginPage.typeDate();
+        LoginPage.clickMonth();
+        LoginPage.typeMonth();
+        LoginPage.clickYear();
+        LoginPage.typeYear2();
+        LoginPage.clickEnter();
     }
     public static String getCountry(){
-        return ogmLoginPage.getCountry();
+        return LoginPage.getCountry();
     }
     public static void setDifferentCountry(){
-        ogmLoginPage.setDifferentCountry();
+        LoginPage.setDifferentCountry();
     }
 
 }

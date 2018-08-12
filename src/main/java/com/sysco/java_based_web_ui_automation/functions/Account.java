@@ -6,45 +6,46 @@ import com.sysco.java_based_web_ui_automation.pages.LoginPage;
 import com.sysco.java_based_web_ui_automation.utils.DriverSetUpUtil;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-/**
- * Created by Rifad on 5/21/18.
- */
 public class Account {
     static String email;
 
-    public static AccountPage ogmAccountPage = new AccountPage();
+    public static AccountPage AccountPage = new AccountPage();
 
     public static void clickMyAccount(){
-        ogmAccountPage.clickMyAccount();
+        AccountPage.clickMyAccount();
     }
 
     public static void typeEmail(String email){
-        ogmAccountPage.typeEmail(email);
+        AccountPage.typeEmail(email);
     }
     public static void typePassword(String password){
-        ogmAccountPage.typePassword(password);
+        AccountPage.typePassword(password);
     }
     public static void clickSendButton(){
-        ogmAccountPage.clickSend();
+        AccountPage.clickSend();
     }
     public static String getEmailRequiredWarning(){
-        return ogmAccountPage.getEmailRequiredWarning();
+        return AccountPage.getEmailRequiredWarning();
     }
     public static String getPasswordRequiredWarning(){
-        return ogmAccountPage.getPasswordRequiredWarning();
+        return AccountPage.getPasswordRequiredWarning();
     }
     public static String getInvalidEmailWarning(){
-        return ogmAccountPage.getInvalidEmailWarning();
+        return AccountPage.getInvalidEmailWarning();
     }
     public static String getInvalidPasswordWarning(){
-        return ogmAccountPage.getInvalidPasswordWarning();
+        return AccountPage.getInvalidPasswordWarning();
     }
     public static void clearEnteredEmailPassword(){
-        ogmAccountPage.clearEmailPassword();
+        AccountPage.clearEmailPassword();
     }
     public static String getUsername(){
-        //System.out.println(ogmAccountPage.getUsername().replaceAll("HELLO, ","").replaceAll("!",""));
-        return ogmAccountPage.getUsername().replaceAll("HELLO, ","").replaceAll("!","");
+
+        return AccountPage.getUsername().replaceAll("HELLO, ","").replaceAll("!","");
+    }
+    public static Boolean isMyAccountDisplayed(){
+        AccountPage.isMyAccountDisplayed();
+        return null;
     }
 
 }
